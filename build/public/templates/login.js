@@ -1,0 +1,30 @@
+
+(function (factory) {
+  if (typeof module === 'object' && module.exports) {
+    module.exports = factory();
+  } else if (typeof define === 'function' && define.amd) {
+    define(factory);
+  }
+})(function () {
+  function compiled(helpers, context, guard, iter, helper) {
+	  return '<div class="login">\n' + (guard(context && context['breadcrumbs'] && context['breadcrumbs']['length']) ? '\n<ol class="breadcrumb">\n\t' + compiled.blocks['breadcrumbs'](helpers, context, guard, iter, helper) + '\n</ol>\n' : '') + '\n\n\t<div class="row">\n\t\t' + (guard(context && context['allowLocalLogin']) ? '\n\t\t<div class="col-md-12">\n\t\t\t<div class="login-block">\n\t\t\t\t<div class="alert alert-danger" id="login-error-notify" ' + (guard(context && context['error']) ? 'style="display:block"' : 'style="display: none;"') + '>\n\t\t\t\t\t<button type="button" class="close" data-dismiss="alert">&times;</button>\n\t\t\t\t\t<strong>[[login:failed_login_attempt]]</strong>\n\t\t\t\t\t<p>' + helpers.__escape(guard(context && context['error'])) + '</p>\n\t\t\t\t</div>\n\n\t\t\t\t<form class="form-horizontal" method="post" target="login" id="login-form">\n\t\t\t\t\t<div class="form-group">\n\t\t\t\t\t\t<label for="username" class="col-lg-2 control-label">' + helpers.__escape(guard(context && context['allowLoginWith'])) + '</label>\n\t\t\t\t\t\t<div class="col-lg-10">\n\t\t\t\t\t\t\t<input class="form-control" type="text" placeholder="' + helpers.__escape(guard(context && context['allowLoginWith'])) + '" name="username" id="username" autocorrect="off" autocapitalize="off" value="' + helpers.__escape(guard(context && context['username'])) + '"/>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="form-group">\n\t\t\t\t\t\t<label for="password" class="col-lg-2 control-label">[[user:password]]</label>\n\t\t\t\t\t\t<div class="col-lg-10">\n\t\t\t\t\t\t\t<input class="form-control" type="password" placeholder="[[user:password]]" name="password" id="password" ' + (guard(context && context['username']) ? 'autocomplete="off"' : '') + '/>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="form-group">\n\t\t\t\t\t\t<div class="col-lg-offset-2 col-lg-10">\n\t\t\t\t\t\t\t<div class="checkbox">\n\t\t\t\t\t\t\t\t<label>\n\t\t\t\t\t\t\t\t\t<input type="checkbox" name="remember" id="remember" checked /> [[login:remember_me]]\n\t\t\t\t\t\t\t\t\t<i class="input-helper"></i>\n\t\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="form-group">\n\t\t\t\t\t\t<div class="col-lg-offset-2 col-lg-10">\n\t\t\t\t\t\t\t<button class="btn btn-primary btn-lg btn-block" id="login" type="submit">[[global:login]]</button>\n\n\t\t\t\t\t\t\t<div class="register-forgot-pwd">\n\t\t\t\t\t\t\t' + (guard(context && context['allowRegistration']) ? '\n\t\t\t\t\t\t\t<span>[[login:dont_have_account]] <a href="' + helpers.__escape(guard(context && context['config'] && context['config']['relative_path'])) + '/register">[[register:register]]</a></span>\n\t\t\t\t\t\t\t' : '') + '\n\t\t\t\t\t\t\t&nbsp; <a id="reset-link" href="' + helpers.__escape(guard(context && context['config'] && context['config']['relative_path'])) + '/reset">[[login:forgot_password]]</a>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</form>\n\n\t\t\t</div>\n\t\t</div>\n\t\t' : '') + '\n\n\t\t' + (guard(context && context['alternate_logins']) ? '\n\t\t<div class="col-lg-offset-2 col-lg-10">\n\t\t\t<div class="alt-logins">\n\t\t\t\t' + compiled.blocks['authentication'](helpers, context, guard, iter, helper) + '\n\t\t\t</div>\n\t\t</div>\n\t\t' : '') + '\n\t</div>\n</div>\n';
+	}
+	
+	compiled.blocks = {
+	  'authentication': function authentication(helpers, context, guard, iter, helper) {
+	    return iter(guard(context && context['authentication']), function each(key1, index, length) {
+	      var key = key1;
+	      return '\n\t\t\t\t<div class="' + helpers.__escape(guard(context && context['authentication'] && context['authentication'][key1] && context['authentication'][key1]['name'])) + '"><a rel="nofollow noopener noreferrer" target="_top" href="' + helpers.__escape(guard(context && context['config'] && context['config']['relative_path'])) + helpers.__escape(guard(context && context['authentication'] && context['authentication'][key1] && context['authentication'][key1]['url'])) + '"><i class="fa ' + helpers.__escape(guard(context && context['authentication'] && context['authentication'][key1] && context['authentication'][key1]['icon'])) + ' fa-3x"></i></a></div>\n\t\t\t\t';
+	    });
+	  },
+	  'breadcrumbs': function breadcrumbs(helpers, context, guard, iter, helper) {
+	    return iter(guard(context && context['breadcrumbs']), function each(key1, index, length) {
+	      var key = key1;
+	      return '\n\t<li' + (index === length - 1 ? ' component="breadcrumb/current"' : '') + ' itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb" ' + (index === length - 1 ? 'class="active"' : '') + '>\n\t\t' + (!(index === length - 1) ? '<a href="' + helpers.__escape(guard(context && context['breadcrumbs'] && context['breadcrumbs'][key1] && context['breadcrumbs'][key1]['url'])) + '" itemprop="url">' : '') + '\n\t\t\t<span itemprop="title">\n\t\t\t\t' + helpers.__escape(guard(context && context['breadcrumbs'] && context['breadcrumbs'][key1] && context['breadcrumbs'][key1]['text'])) + '\n\t\t\t\t' + (index === length - 1 ? '\n\t\t\t\t' + (!guard(context && context['feeds:disableRSS']) ? '\n\t\t\t\t' + (guard(context && context['rssFeedUrl']) ? '<a target="_blank" href="' + helpers.__escape(guard(context && context['rssFeedUrl'])) + '"><i class="fa fa-rss-square"></i></a>' : '') : '') + '\n\t\t\t\t' : '') + '\n\t\t\t</span>\n\t\t' + (!(index === length - 1) ? '</a>' : '') + '\n\t</li>\n\t';
+	    });
+	  }
+	};
+
+  return compiled;
+});
+  
