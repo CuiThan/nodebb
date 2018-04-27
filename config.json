@@ -1,5 +1,5 @@
 {
-    "url": "http://localhost:4567",
+    "url": "http://125.212.238.119:4567",
     "secret": "82a2eb9e-c76e-4c9b-9b54-0657d55f9705",
     "database": "mongo",
     "port": 4567,

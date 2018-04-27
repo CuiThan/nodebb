@@ -156,7 +156,7 @@ describe('User', function () {
 
 	describe('.getModeratorUids()', function () {
 		before(function (done) {
-			groups.join('cid:1:privileges:moderate', 1, done);
+			groups.join('cid:1:s:moderate', 1, done);
 		});
 
 		it('should retrieve all users with moderator bit in category privilege', function (done) {
